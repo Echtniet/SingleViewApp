@@ -30,18 +30,18 @@ class ViewController: UIViewController {
             tfDays.text = "\(days)"
             tfSeconds.text = "\(seconds)"
         }else{
-            let alert = UIAlertController(title: "Warning!", message: "Invalid years entered", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            alert.addAction(UIAlertAction(title: "Cancels", style: .default, handler: nil))
+            let alert = UIAlertController(title: "Warning!", message: "Invalid years entered. Use 5 years instead?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(alert: UIAlertAction!) in self.use5()}))
+            alert.addAction(UIAlertAction(title: "No, cancel", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
     
     
-    func why(){
-        let alert = UIAlertController(title: "Why", message: "Invalid years entered", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+    func use5() -> Void{
+        tfMonths.text = "\(5 * 12)"
+        tfDays.text = "\(5 * 365)"
+        tfSeconds.text = "\(5 * 365 * 24 * 60 * 60)"
     }
 }
 
